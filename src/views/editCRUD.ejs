@@ -1,0 +1,48 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit user info</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Edit user information</h1>
+        <form action="/put-crud" method="POST" class="row g-3">
+            <div class="col-md-6">
+                <label for="inputFirstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="inputFirstName" name="firstName" placeholder="Soram"
+                    value="<%= user.firstName %>">
+            </div>
+            <div class="col-md-6">
+                <label for="inputLastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="inputLastName" name="lastName" placeholder="Yo"
+                    value="<%= user.lastName %>">
+            </div>
+            <div class="col-md-8">
+                <label for="inputAddress" class="form-label">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Apartment, studio, or floor"
+                    name="address" value="<%= user.address %>">
+            </div>
+            <div class="col-md-4">
+                <label for="inputPhoneNumber" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" id="inputPhoneNumber" placeholder="0123456789"
+                    name="phoneNumber" value="<%= user.phoneNumber %>">
+            </div>
+            <input type="hidden" name="id" value="<%= user.id %>">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+        <br>
+    </div>
+</body>
+
+</html>
