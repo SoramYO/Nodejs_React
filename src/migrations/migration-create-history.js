@@ -23,6 +23,10 @@ module.exports = {
                 type: Sequelize.DataTypes.TEXT,
                 allowNull: false
             },
+            file: {
+                type: Sequelize.DataTypes.TEXT,
+                allowNull: false
+            },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DataTypes.DATE

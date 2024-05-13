@@ -33,15 +33,23 @@ module.exports = {
         type: Sequelize.DataTypes.STRING,
         allowNull: false
       },
+      phoneNumber: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false
+      },
       gender: {
         type: Sequelize.DataTypes.BOOLEAN,
         allowNull: false
       },
-      typeRole: {
+      image: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false
       },
-      keyRole: {
+      roleId: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false
+      },
+      positionId: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false
       },

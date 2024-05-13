@@ -10,6 +10,11 @@ module.exports = {
                 type: Sequelize.DataTypes.INTEGER,
                 primaryKey: true
             },
+            name: {
+                type: Sequelize.DataTypes.STRING,
+                allowNull: false,
+                unique: true
+            },
             description: {
                 type: Sequelize.DataTypes.TEXT,
                 allowNull: false
