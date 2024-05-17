@@ -19,7 +19,6 @@ let createNewUser = async (data) => {
             });
             resolve('Create new user success');
         } catch (error) {
-            console.log(error);
             reject(error);
         };
 
