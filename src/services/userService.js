@@ -118,21 +118,26 @@ let createNewUser = (data) => {
                     message: 'Your email is already in used. Please try another email!'
                 });
             }
-            let hashPasswordFromBcrypt = await hashUserPassword(data.password)
-            await db.User.create({
-                email: data.email,
-                password: hashPasswordFromBcrypt,
-                firstName: data.firstName,
-                lastName: data.lastName,
-                address: data.address,
-                phoneNumber: data.phoneNumber,
-                gender: data.gender === '1' ? true : false,
-                roleId: data.roleId
-            });
-            resolve({
-                errCode: 0,
-                message: 'OK'
-            });
+            else {
+                let hashPasswordFromBcrypt = await hashUserPassword(data.password)
+                await db.User.create({
+                    email: data.email,
+                    password: hashPasswordFromBcrypt,
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    address: data.address,
+                    phoneNumber: data.phoneNumber,
+                    gender: data.gender === '1' ? true : false,
+                    roleId: data.roleId
+                });
+                resolve({
+                    errCode: 0,
+                    message: 'OK'
+                });
+
+            }
+
+
         } catch (error) {
             reject(error);
         };
@@ -153,6 +158,12 @@ let hashUserPassword = (password) => {
 let updateUserData = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
+            if (!data.id) {
+                resolve({
+                    errCode: 1,
+                    message: 'Missing required parameter'
+                });
+            }
             let user = await db.User.findOne({
                 where: { id: data.id }
             });
@@ -161,7 +172,14 @@ let updateUserData = (data) => {
                 user.lastName = data.lastName;
                 user.address = data.address;
                 user.phoneNumber = data.phoneNumber;
-                await user.save();
+                await db.User.update({
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    address: user.address,
+                    phoneNumber: user.phoneNumber
+                }, {
+                    where: { id: data.id }
+                });
                 resolve({
                     errCode: 0,
                     message: 'Update the user successful'

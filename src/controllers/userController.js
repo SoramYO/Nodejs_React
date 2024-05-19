@@ -1,4 +1,3 @@
-import { error } from 'console';
 import userService from '../services/userService';
 
 let handleLogin = async (req, res) => {
